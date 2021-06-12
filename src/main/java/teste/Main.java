@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 		Data mapa = new Data();
 		int x=3;
-		int y=6;
+		int y=0;
 		int pos_ant_x=0;
 		int pos_ant_y=0;
 		boolean caminhos_l = true;
@@ -71,9 +71,7 @@ public class Main {
 						}else {
 							y++;
 						}
-						}
-
-
+					}
 					
 				}
 
@@ -94,53 +92,101 @@ public class Main {
 							caminhos_l = false;
 						}
 					};	
-				}else {
-					
-					if(x>0) {
+				}else {		
+					if((x>0)&&(y<9)) {
 						if(mapa.map[x-1][y] != 1) {
 							x--;
 							if(mapa.map[x][y+1] != 1) {
 								caminhos_l=true;
 							}
-							
-						}else if(mapa.map[x][y-1] !=1) {
-							y--;
-							if(mapa.map[x+1][y]!= 1) {
-								caminhos_l=true;
-							}
-							y--;
-						}else if(mapa.map[x+1][y]!= 1) {
+						}else if(y > 0) {
+							if(mapa.map[x+1][y] != 1){
 							x++;
-							if(mapa.map[x][y+1] != 1) {
+							caminhos_l=true;
+							}
+						}else if(mapa.map[x][y+1]!= 1) {							
+							if(mapa.map[x-1][y] != 1) {
 								caminhos_l=true;
 							}
-						}else if(mapa.map[x][y-1]!=1) {
 							y++;
-							if(mapa.map[x+1][y] != 1) {
+						}else {
+							System.out.println("Preso");
+							break;
+						}
+					}else if((y>0)&&(x<3)) {
+						if(mapa.map[x][y-1] != 1) {
+							y--;
+							if(mapa.map[x][y-2]!= 1) {
 								caminhos_l=true;
 							}
-						}
-					}else if(mapa.map[x][y-1] !=1) {
-						y--;
-						if(mapa.map[x+1][y]!= 1) {
-							caminhos_l=true;
-						}
-						y--;
-					}else if(mapa.map[x+1][y]!= 1) {
-						x++;
-						if(mapa.map[x][y+1] != 1) {
-							caminhos_l=true;
-						}
-					}else if(mapa.map[x][y-1]!=1) {
-						y++;
-						if(mapa.map[x+1][y] != 1) {
-							caminhos_l=true;
+						}else if(mapa.map[x+1][y] !=1) {
+							x++;
+						}else if(mapa.map[x][y+1]!= 1) {
+							y++;
+						}else {
+							System.out.println("Preso");
+							break;
 						}
 					}
+//					if(x>0) {
+//						if(mapa.map[x-1][y] != 1) {
+//							x--;
+//							if(mapa.map[x][y+1] != 1) {
+//								caminhos_l=true;
+//							}
+//							
+//						}else if(y>0) {
+//							if(mapa.map[x][y-1] !=1) {
+//								y--;
+//								if(mapa.map[x+1][y]!= 1) {
+//									caminhos_l=true;
+//								}
+//								y--;
+//							}else if(x<3) {
+//								if(mapa.map[x+1][y]!= 1) {
+//									x++;
+//									if(mapa.map[x][y+1] != 1) {
+//										caminhos_l=true;
+//									}
+//								}
+//							}else if(mapa.map[x][y+1]!=1) {
+//								y++;
+//								if(mapa.map[x+1][y] != 1) {
+//									caminhos_l=true;
+//								}
+//							}else {
+//								System.out.print("Preso");
+//							}
+//						}
+//					}else if(mapa.map[x][y-1] !=1) {
+//						y--;
+//						if(mapa.map[x+1][y]!= 1) {
+//							caminhos_l=true;
+//						}
+//					}else if(mapa.map[x+1][y]!= 1) {
+//						x++;
+//						if(mapa.map[x][y-1] != 1) {
+//							caminhos_l=true;
+//						}
+//					}else if(y<9) {
+//						if(mapa.map[x][y-1]!=1) {
+//							y++;
+//							if(mapa.map[x+1][y] != 1) {
+//								caminhos_l=true;
+//							}
+//						}
+//					}else {
+//						System.out.println("Preso");
+//					}
+					
 				}
 			}
-			
-		
+			if((pos_ant_x == x)&&(pos_ant_y == y)) {
+				continue;
+			}else {
+				pos_ant_x=x;
+				pos_ant_y=y;
+			}
 
 		    for (int i = 0; i < mapa.map.length; ++i) {
 		        for(int j = 0; j < mapa.map[i].length; ++j) {
