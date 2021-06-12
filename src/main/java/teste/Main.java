@@ -79,17 +79,63 @@ public class Main {
 
 			}else if((x>0)||(y>0))
 			{
-				if((y>0) && (x<1)) {
-					if(mapa.map[x][y-1] != 1) {
-						y--;
-					}else if(mapa.map[x+1][y] != 1) {
-						x++;
-					}
+				if(caminhos_l) {
+					if(x>y) {
+						if(mapa.map[x-1][y] != 1) {
+							x--;
+						}else {
+							caminhos_l=false;
+						}
+
+					}else{
+						if(mapa.map[x][y-1] != 1) {
+							y--;
+						}else {
+							caminhos_l = false;
+						}
+					};	
 				}else {
-					if(mapa.map[x-1][y] != 1) {
-						x--;
-					}else if(mapa.map[x][y+1] !=1){
+					
+					if(x>0) {
+						if(mapa.map[x-1][y] != 1) {
+							x--;
+							if(mapa.map[x][y+1] != 1) {
+								caminhos_l=true;
+							}
+							
+						}else if(mapa.map[x][y-1] !=1) {
+							y--;
+							if(mapa.map[x+1][y]!= 1) {
+								caminhos_l=true;
+							}
+							y--;
+						}else if(mapa.map[x+1][y]!= 1) {
+							x++;
+							if(mapa.map[x][y+1] != 1) {
+								caminhos_l=true;
+							}
+						}else if(mapa.map[x][y-1]!=1) {
+							y++;
+							if(mapa.map[x+1][y] != 1) {
+								caminhos_l=true;
+							}
+						}
+					}else if(mapa.map[x][y-1] !=1) {
+						y--;
+						if(mapa.map[x+1][y]!= 1) {
+							caminhos_l=true;
+						}
+						y--;
+					}else if(mapa.map[x+1][y]!= 1) {
+						x++;
+						if(mapa.map[x][y+1] != 1) {
+							caminhos_l=true;
+						}
+					}else if(mapa.map[x][y-1]!=1) {
 						y++;
+						if(mapa.map[x+1][y] != 1) {
+							caminhos_l=true;
+						}
 					}
 				}
 			}
