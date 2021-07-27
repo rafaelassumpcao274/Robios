@@ -99,12 +99,12 @@ public boolean [] posibility() {
 
 	public int getCurrentXPosition() {
 		// TODO Auto-generated method stub
-		return 0;
+		return currentXPosition;
 	}
 
 	public int getCurrentYPosition() {
 		// TODO Auto-generated method stub
-		return 0;
+		return currentYPosition;;
 	}
 	
 	public void setCurrentXPosition(int currentXPosition) {
