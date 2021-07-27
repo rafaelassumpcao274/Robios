@@ -104,7 +104,7 @@ public boolean [] posibility() {
 
 	public int getCurrentYPosition() {
 		// TODO Auto-generated method stub
-		return currentYPosition;;
+		return currentYPosition;
 	}
 	
 	public void setCurrentXPosition(int currentXPosition) {
