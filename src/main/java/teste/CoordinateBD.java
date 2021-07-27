@@ -27,8 +27,10 @@ public class CoordinateBD {
 	public CoordinateBD(HashMap<Integer,Integer> x,HashMap<Integer,Integer> y){
 		
 		for(int i = 0;i<x.size();i++) {
+			this.steps.add(new Document("init", i));
 			this.steps.add(new Document("x", x.get(i)));
-			this.steps.add(new Document("y", y.get(i)));		
+			this.steps.add(new Document("y", y.get(i)));
+			this.steps.add(new Document("Steps",x.size()));
 		}
 
 		connectionBd();
