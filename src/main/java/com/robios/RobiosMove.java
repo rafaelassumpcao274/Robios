@@ -22,9 +22,10 @@ public class RobiosMove implements Robios {
 				System.out.println(this.getCurrentXPosition()+","+this.getCurrentYPosition());
 				relativeMove(this.getCurrentXPosition(),this.getCurrentYPosition());
 			}
-			// CoordinateBD connectBD = new CoordinateBD(coordX, coordY);
+			
 			System.out.println(this.getCurrentXPosition()+","+this.getCurrentYPosition());
 		}
+		CoordinateBD connectBD = new CoordinateBD(this.walk);
 		System.out.println("O robios deu "+ this.walk.size()+" passos.");
 	}
 	

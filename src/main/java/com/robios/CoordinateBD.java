@@ -24,15 +24,9 @@ public class CoordinateBD {
 	MongoDatabase db;
 
 
-	public CoordinateBD(HashMap<Integer,Integer> x,HashMap<Integer,Integer> y){
+	public CoordinateBD(ArrayList<String> coords){
 		
-		for(int i = 0;i<x.size();i++) {
-			this.steps.add(new Document("init", i));
-			this.steps.add(new Document("x", x.get(i)));
-			this.steps.add(new Document("y", y.get(i)));
-			this.steps.add(new Document("Steps",x.size()));
-		}
-
+		this.steps.add(new Document("Steps", coords));
 		connectionBd();
 		insertMongo(conn, db);
 		
