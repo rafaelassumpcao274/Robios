@@ -19,49 +19,52 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 
 public class CoordinateBD {
-	List<Document> steps = new ArrayList<Document>();
-	MongoClient conn;
-	MongoDatabase db;
+    List<Document> steps = new ArrayList<Document>();
+    MongoClient conn;
+    MongoDatabase db;
 
 
-	public CoordinateBD(ArrayList<String> coords){
-		
-		this.steps.add(new Document("Steps", coords));
-		connectionBd();
-		insertMongo(conn, db);
-		
-	}
-	public void insertMongo(MongoClient conn,MongoDatabase db) {
+    public CoordinateBD(ArrayList<String> coords) {
 
-		 MongoCollection<Document> collection = db.getCollection("Coordinate");
-		 collection.insertMany(this.steps);
-	}
-	
-	public void connectionBd() {
-		this.setConn(MongoClients.create("mongodb://localhost:27017"));		
-		this.setDb(conn.getDatabase("Robios"));
-	}
-	
+        this.steps.add(new Document("Steps", coords));
+        connectionBd();
+        insertMongo(conn, db);
 
-	
-	
-	public MongoClient getConn() {
-		return conn;
-	}
-	public void setConn(MongoClient conn) {
-		this.conn = conn;
-	}
-	public MongoDatabase getDb() {
-		return db;
-	}
-	public void setDb(MongoDatabase db) {
-		this.db = db;
-	}
-	
-	public Document getSteps() {
-		return (Document) steps;
-	}
-	public void setSteps(Document steps) {
-		this.steps = (List<Document>) steps;
-	}
+    }
+
+    public void insertMongo(MongoClient conn, MongoDatabase db) {
+
+        MongoCollection<Document> collection = db.getCollection("Coordinate");
+        collection.insertMany(this.steps);
+    }
+
+    public void connectionBd() {
+        this.setConn(MongoClients.create("mongodb://localhost:27017"));
+        this.setDb(conn.getDatabase("Robios"));
+    }
+
+
+    public MongoClient getConn() {
+        return conn;
+    }
+
+    public void setConn(MongoClient conn) {
+        this.conn = conn;
+    }
+
+    public MongoDatabase getDb() {
+        return db;
+    }
+
+    public void setDb(MongoDatabase db) {
+        this.db = db;
+    }
+
+    public Document getSteps() {
+        return (Document) steps;
+    }
+
+    public void setSteps(Document steps) {
+        this.steps = (List<Document>) steps;
+    }
 }
